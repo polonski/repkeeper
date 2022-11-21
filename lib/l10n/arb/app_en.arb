@@ -1,0 +1,7 @@
+{
+    "@@locale": "en",
+    "drawerAppBarTitle": "RepKeeper",
+    "@drawerAppBarTitle": {
+        "description": "RepKeeper keeps up with your reps."
+    }
+}

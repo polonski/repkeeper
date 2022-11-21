@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>155270272585-qfhemhd3ooqc05vi0pm24p2gaioae8va.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.155270272585-qfhemhd3ooqc05vi0pm24p2gaioae8va</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>155270272585-6os95a2ldq5jlrfccee7ihlqgaoac4hs.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAitCLZQtZ4ygFA9nsu_z3No2T7eQLgaQg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>155270272585</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.repkeeper.app.repkeeper.dev</string>
+	<key>PROJECT_ID</key>
+	<string>repkeeper-9e473</string>
+	<key>STORAGE_BUCKET</key>
+	<string>repkeeper-9e473.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:155270272585:ios:86cd9d1a3c846f760e1198</string>
+	<key>DATABASE_URL</key>
+	<string>https://repkeeper-9e473.firebaseio.com</string>
+</dict>
+</plist>

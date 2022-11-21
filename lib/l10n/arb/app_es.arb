@@ -1,0 +1,7 @@
+{
+    "@@locale": "es",
+    "drawerAppBarTitle": "RepKeeper",
+    "@drawerAppBarTitle": {
+        "description": "RepKeeper mucho bueno."
+    }
+}
