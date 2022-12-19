@@ -3,5 +3,9 @@
     "drawerAppBarTitle": "RepKeeper",
     "@drawerAppBarTitle": {
         "description": "RepKeeper mucho bueno."
-    }
+    },
+    "bottomNavigationBarItemWorkout": "Workout",
+    "bottomNavigationBarItemSettings": "Settings",
+    "bottomNavigationBarItemSchedule": "Schedule",
+    "bottomNavigationBarItemResults": "Results"
 }

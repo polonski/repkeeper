@@ -5,16 +5,11 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
-import 'dart:io';
-
 import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
 
-class NavBarCubit extends Cubit<int> {
-  NavBarCubit() : super(0);
+class SettingsCubit extends Cubit<int> {
+  SettingsCubit() : super(0);
 
-  void setTabIndex(int index ) => emit(index);
-
- 
+  void loggedIn() => emit(state);
  
 }

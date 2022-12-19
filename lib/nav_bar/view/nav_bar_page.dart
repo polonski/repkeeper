@@ -5,11 +5,14 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
+
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:repkeeper/nav_bar/nav_bar.dart';
-
 import 'package:repkeeper/l10n/l10n.dart';
+
 
 class NavBarPage extends StatelessWidget {
   const NavBarPage({super.key});
@@ -21,6 +24,8 @@ class NavBarPage extends StatelessWidget {
       child: const NavBarView(),
     );
   }
+
+ 
 }
 
 class NavBarView extends StatelessWidget {
@@ -28,7 +33,16 @@ class NavBarView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void onItemTapped(int index){
+
+      stdout.writeln(context.read<NavBarCubit>().state);
+      context.read<NavBarCubit>().setTabIndex(index);
+      stdout.writeln('....');
+      stdout.writeln(context.read<NavBarCubit>().state);
+      
+    }
     final l10n = context.l10n;
+ 
     return BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
@@ -50,8 +64,8 @@ class NavBarView extends StatelessWidget {
             label: 'Results',
           ),
         ],
-        currentIndex: 1,
-        //onTap: _onItemTapped,
+        currentIndex: context.watch<NavBarCubit>().state,
+        onTap: onItemTapped,
       );
   }
 }
