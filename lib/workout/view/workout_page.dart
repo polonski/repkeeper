@@ -7,8 +7,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:repkeeper/drawer/drawer.dart';
-import 'package:repkeeper/nav_bar/nav_bar.dart';
 import 'package:repkeeper/workout/workout.dart';
 import 'package:repkeeper/l10n/l10n.dart';
 

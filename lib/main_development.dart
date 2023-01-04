@@ -5,10 +5,10 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
-import 'package:repkeeper/app/app.dart';
-import 'package:repkeeper/bootstrap.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:repkeeper/app/app.dart';
+import 'package:repkeeper/bootstrap.dart';
 //import 'package:repkeeper/app/view/app.dart';
 import 'package:repkeeper/firebase_options_dev.dart';
 

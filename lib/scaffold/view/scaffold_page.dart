@@ -10,7 +10,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:repkeeper/drawer/drawer.dart';
-import 'package:repkeeper/nav_bar/nav_bar.dart';
 import 'package:repkeeper/scaffold/scaffold.dart';
 import 'package:repkeeper/workout/workout.dart';
 import 'package:repkeeper/settings/settings.dart';
@@ -22,15 +21,17 @@ class ScaffoldPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => NavBarCubit(),
+      create: (_) => ScaffoldCubit(),
       child: const ScaffoldView(),
     );
   }
 }
-
-class ScaffoldView extends StatelessWidget {
+class ScaffoldView extends StatefulWidget {
   const ScaffoldView({super.key});
-
+  @override
+  State<ScaffoldView> createState() => _ScaffoldView();
+}
+class _ScaffoldView extends State<ScaffoldView> {
   final _navBarStates = const <Widget> [WorkoutPage(),
                                         SettingsPage(),
                                         WorkoutPage(),
@@ -38,48 +39,45 @@ class ScaffoldView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (_) => NavBarCubit(), lazy: true)],
+      providers: [BlocProvider(create: (_) => ScaffoldCubit(), lazy: true)],
       child: Scaffold(
+
         appBar: AppBar(title: Text(l10n.drawerAppBarTitle)),
         drawer: const DrawerPage(),
-        bottomNavigationBar: const NavBarPage(),
-        body: BlocProvider(
-          create: (context) => NavBarCubit(),
-          lazy: false,
-          child:  Center(
-          //child: CounterText(),
-            child: Builder(
-              builder: (context){
-                  final _state = context.watch<NavBarCubit>().state;
-                  return Text('-->$_state');
-                }
-              ),
+        bottomNavigationBar: BottomNavigationBar(
+          
+          type: BottomNavigationBarType.fixed,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.alarm),
+              label: 'Workout',
             ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              label: 'Settings',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.today),
+              label: 'Schedule',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.analytics),
+              label: 'Results',
+            ),
+          ],
+          currentIndex: context.watch<ScaffoldCubit>().state,
+          onTap: context.read<ScaffoldCubit>().setTabIndex,
+        ),
+      
+      body: BlocProvider(
+        create: (context) => ScaffoldCubit(),
+        lazy: false,
+        child:  Center(
+          child: _navBarStates[context.read<ScaffoldCubit>().state],
           ),
         ),
-      );
-    
-  }
-
-}
-class CounterText extends StatelessWidget {
-  const CounterText({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-
-
-    
-    final theme = Theme.of(context);
-    final count = context.select((NavBarCubit cubit) => cubit.state);
-   final co = context.read<NavBarCubit>().state;
-
-stdout.writeln('count');
-      stdout.writeln(co);
-      stdout.writeln(count);
-
-    return Text('$co', style: theme.textTheme.headline1);
+      ),
+    );
   }
 }
