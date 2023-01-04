@@ -11,5 +11,4 @@ class WorkoutCubit extends Cubit<int> {
   WorkoutCubit() : super(0);
 
   void loggedIn() => emit(state);
- 
 }

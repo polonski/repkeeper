@@ -11,5 +11,4 @@ class SettingsCubit extends Cubit<int> {
   SettingsCubit() : super(0);
 
   void loggedIn() => emit(state);
- 
 }

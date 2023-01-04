@@ -5,12 +5,5 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
-import 'package:bloc/bloc.dart';
-
-class ScaffoldCubit extends Cubit<int> {
-  ScaffoldCubit() : super(0);
-
-  void loggedIn() => emit(state);
-
-  void setTabIndex(int index) => emit(index);
-}
+export 'cubit/schedule_cubit.dart';
+export 'view/schedule_page.dart';

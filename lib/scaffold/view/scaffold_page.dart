@@ -10,9 +10,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:repkeeper/drawer/drawer.dart';
+import 'package:repkeeper/results/results.dart';
 import 'package:repkeeper/scaffold/scaffold.dart';
-import 'package:repkeeper/workout/workout.dart';
+import 'package:repkeeper/schedule/schedule.dart';
 import 'package:repkeeper/settings/settings.dart';
+import 'package:repkeeper/workout/workout.dart';
+
 import 'package:repkeeper/l10n/l10n.dart';
 
 class ScaffoldPage extends StatelessWidget {
@@ -26,27 +29,29 @@ class ScaffoldPage extends StatelessWidget {
     );
   }
 }
+
 class ScaffoldView extends StatefulWidget {
   const ScaffoldView({super.key});
   @override
   State<ScaffoldView> createState() => _ScaffoldView();
 }
+
 class _ScaffoldView extends State<ScaffoldView> {
-  final _navBarStates = const <Widget> [WorkoutPage(),
-                                        SettingsPage(),
-                                        WorkoutPage(),
-                                        WorkoutPage()];
+  final _navBarStates = const <Widget>[
+    WorkoutPage(),
+    SettingsPage(),
+    SchedulePage(),
+    ResultsPage()
+  ];
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     return MultiBlocProvider(
       providers: [BlocProvider(create: (_) => ScaffoldCubit(), lazy: true)],
       child: Scaffold(
-
         appBar: AppBar(title: Text(l10n.drawerAppBarTitle)),
         drawer: const DrawerPage(),
         bottomNavigationBar: BottomNavigationBar(
-          
           type: BottomNavigationBarType.fixed,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -69,12 +74,11 @@ class _ScaffoldView extends State<ScaffoldView> {
           currentIndex: context.watch<ScaffoldCubit>().state,
           onTap: context.read<ScaffoldCubit>().setTabIndex,
         ),
-      
-      body: BlocProvider(
-        create: (context) => ScaffoldCubit(),
-        lazy: false,
-        child:  Center(
-          child: _navBarStates[context.read<ScaffoldCubit>().state],
+        body: BlocProvider(
+          create: (context) => ScaffoldCubit(),
+          lazy: false,
+          child: Center(
+            child: _navBarStates[context.read<ScaffoldCubit>().state],
           ),
         ),
       ),
