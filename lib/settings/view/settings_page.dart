@@ -84,7 +84,7 @@ class _SettingsView extends State<SettingsView>
         bottomNavigationBar: Container(
           color: Colors.grey[600],
           child: TabBar(
-            labelColor: Color(0xFFFFFFFF),
+            labelColor: const Color(0xFFFFFFFF),
             controller: _tabController,
             tabs: [
               for (final tab in tabs)

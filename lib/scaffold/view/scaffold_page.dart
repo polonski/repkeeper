@@ -50,6 +50,10 @@ class _ScaffoldView extends State<ScaffoldView> {
         appBar: AppBar(title: Text(l10n.drawerAppBarTitle)),
         drawer: const DrawerPage(),
         bottomNavigationBar: BottomNavigationBar(
+          unselectedItemColor: Colors.grey,
+          selectedItemColor: Colors.blue,
+          backgroundColor: Colors.white,
+          
           type: BottomNavigationBarType.fixed,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
