@@ -2,7 +2,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:repkeeper/settings/settings.dart';
+import 'package:repkeeper/settings_challenge/settings_challenge.dart';
 import 'package:repkeeper/settings_sets/settings_sets.dart';
+import 'package:repkeeper/settings_workout/settings_workout.dart';
 import 'package:repkeeper/l10n/l10n.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -63,13 +65,13 @@ class _SettingsView extends State<SettingsView>
 
     final tabs = [
       'Sets',
-      'Workout',
-      'Challenge',
+      'Workouts',
+      'Challenges',
     ];
     final tabs_pages = const <Widget>[
       SettingsSetsPage(),
-      SettingsSetsPage(),
-      SettingsSetsPage(),
+      SettingsWorkoutPage(),
+      SettingsChallengePage(),
     ];
 
     return MultiBlocProvider(
