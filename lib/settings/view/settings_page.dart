@@ -58,11 +58,8 @@ class _SettingsView extends State<SettingsView>
     super.dispose();
   }
 
-  @override
   void tapped(int index) {
- stdout.writeln(index);
-      context.read<SettingsCubit>().setTabIndex(index);
-        
+    context.read<SettingsCubit>().setTabIndex(index);
   }
 
   @override
@@ -78,34 +75,33 @@ class _SettingsView extends State<SettingsView>
     return MultiBlocProvider(
       providers: [BlocProvider(create: (_) => SettingsCubit(), lazy: true)],
       child: Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Text(
-          '${tabs[context.watch<SettingsCubit>().state]} Settings',
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          title: Text(
+            '${tabs[context.watch<SettingsCubit>().state]} Settings',
+          ),
         ),
-      ),
-      bottomNavigationBar: Container(
-        color: Colors.grey[600],
-        child: TabBar(
-          labelColor: Color(0xFFFFFFFF),
+        bottomNavigationBar: Container(
+          color: Colors.grey[600],
+          child: TabBar(
+            labelColor: Color(0xFFFFFFFF),
+            controller: _tabController,
+            tabs: [
+              for (final tab in tabs)
+                Tab(
+                  text: tab,
+                ),
+            ],
+            onTap: tapped,
+          ),
+        ),
+        body: TabBarView(
           controller: _tabController,
-          isScrollable: false,
-          tabs: [
+          children: [
             for (final tab in tabs)
-              Tab(
-                text: tab,
+              Center(
+                child: Text(tab),
               ),
-          ],
-          onTap: tapped,
-        ),
-      ),
-      body: TabBarView(
-        controller: _tabController,
-        children: [
-          for (final tab in tabs)
-            Center(
-              child: Text(tab),
-            ),
           ],
         ),
       ),
