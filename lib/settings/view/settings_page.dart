@@ -68,7 +68,7 @@ class _SettingsView extends State<SettingsView>
       'Workouts',
       'Challenges',
     ];
-    final tabs_pages = const <Widget>[
+    final tabs_pages = <Widget>[
       SettingsSetsPage(),
       SettingsWorkoutPage(),
       SettingsChallengePage(),

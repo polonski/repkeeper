@@ -33,7 +33,9 @@ class _SettingsChallengeView extends State<SettingsChallengeView> {
           floatingActionButton: FloatingActionButton.extended(
             icon: const Icon(Icons.add),
             label: const Text('New Challenge'),
-            onPressed: () {},
+            onPressed: () {
+              
+            },
           ),
           floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         ),
