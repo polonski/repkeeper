@@ -29,7 +29,14 @@ class _SettingsSetsView extends State<SettingsSetsView> {
 
     return MultiBlocProvider(
       providers: [BlocProvider(create: (_) => SettingsSetsCubit(), lazy: true)],
-      child: Text('Sets Settings'),
+      child: Scaffold(
+          floatingActionButton: FloatingActionButton.extended(
+            icon: const Icon(Icons.add),
+            label: const Text('New Set'),
+            onPressed: () {},
+          ),
+          floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+        ),
     );
   }
 }

@@ -29,7 +29,15 @@ class _SettingsWorkoutView extends State<SettingsWorkoutView> {
 
     return MultiBlocProvider(
       providers: [BlocProvider(create: (_) => SettingsWorkoutCubit(), lazy: true)],
-      child: Text('Workouts Settings'),
+      child: 
+        Scaffold(
+          floatingActionButton: FloatingActionButton.extended(
+            icon: const Icon(Icons.add),
+            label: const Text('New Workout'),
+            onPressed: () {},
+          ),
+          floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+        ),
     );
   }
 }

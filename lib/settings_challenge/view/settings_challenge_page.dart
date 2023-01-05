@@ -29,7 +29,14 @@ class _SettingsChallengeView extends State<SettingsChallengeView> {
 
     return MultiBlocProvider(
       providers: [BlocProvider(create: (_) => SettingsChallengeCubit(), lazy: true)],
-      child: Text('Challenges Settings'),
+      child:  Scaffold(
+          floatingActionButton: FloatingActionButton.extended(
+            icon: const Icon(Icons.add),
+            label: const Text('New Challenge'),
+            onPressed: () {},
+          ),
+          floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+        ),
     );
   }
 }
