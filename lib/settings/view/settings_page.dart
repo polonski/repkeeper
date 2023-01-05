@@ -1,13 +1,8 @@
-// Copyright (c) 2022, Very Good Ventures
-// https://verygood.ventures
-//
-// Use of this source code is governed by an MIT-style
-// license that can be found in the LICENSE file or at
-// https://opensource.org/licenses/MIT.
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:repkeeper/settings/settings.dart';
+import 'package:repkeeper/settings_sets/settings_sets.dart';
 import 'package:repkeeper/l10n/l10n.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -71,6 +66,11 @@ class _SettingsView extends State<SettingsView>
       'Workout',
       'Challenge',
     ];
+    final tabs_pages = const <Widget>[
+      SettingsSetsPage(),
+      SettingsSetsPage(),
+      SettingsSetsPage(),
+    ];
 
     return MultiBlocProvider(
       providers: [BlocProvider(create: (_) => SettingsCubit(), lazy: true)],
@@ -98,10 +98,9 @@ class _SettingsView extends State<SettingsView>
         body: TabBarView(
           controller: _tabController,
           children: [
-            for (final tab in tabs)
-              Center(
-                child: Text(tab),
-              ),
+            Center(child: tabs_pages[0]),
+            Center(child: tabs_pages[1]),
+            Center(child: tabs_pages[2]),
           ],
         ),
       ),
