@@ -28,7 +28,6 @@ class ScaffoldView extends StatefulWidget {
 }
 
 class _ScaffoldView extends State<ScaffoldView> {
-  int _selectedIndex = 0;
   late PageController _pageController;
 
   @override
@@ -45,11 +44,12 @@ class _ScaffoldView extends State<ScaffoldView> {
 
   void _onItemTapped(int index) {
     context.read<ScaffoldCubit>().setTabIndex(index);
-
     setState(() {
-      _selectedIndex = index;
-      _pageController.animateToPage(index,
-          duration: Duration(milliseconds: 200), curve: Curves.easeOut);
+      _pageController.animateToPage(
+        index,
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeOut,
+      );
     });
   }
 
@@ -100,10 +100,10 @@ class _ScaffoldView extends State<ScaffoldView> {
             child: PageView(
               controller: _pageController,
               onPageChanged: (index) {
-                setState(() => _selectedIndex = index);
+                setState(() => index);
               },
               children: <Widget>[
-                for (int i = 0; i <= 3; i++) Container(child: _navBarStates[i]),
+                for (int i = 0; i <= 3; i++) _navBarStates[i],
               ],
             ),
           ),
