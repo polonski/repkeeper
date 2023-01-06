@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:repkeeper/settings_sets/settings_sets.dart';
+import 'package:repkeeper/settings_sets_dialog/settings_sets_dialog.dart';
 import 'package:repkeeper/l10n/l10n.dart';
 
 class SettingsSetsPage extends StatelessWidget {
@@ -30,13 +31,19 @@ class _SettingsSetsView extends State<SettingsSetsView> {
     return MultiBlocProvider(
       providers: [BlocProvider(create: (_) => SettingsSetsCubit(), lazy: true)],
       child: Scaffold(
-          floatingActionButton: FloatingActionButton.extended(
-            icon: const Icon(Icons.add),
-            label: const Text('New Set'),
-            onPressed: () {},
-          ),
-          floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+        floatingActionButton: FloatingActionButton.extended(
+          icon: const Icon(Icons.add),
+          label: const Text('New Set'),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const SettingsSetsDialogPage()),
+            );
+          },
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      ),
     );
   }
 }
