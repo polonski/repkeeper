@@ -100,9 +100,7 @@ class _SettingsView extends State<SettingsView>
         body: TabBarView(
           controller: _tabController,
           children: [
-            Center(child: tabs_pages[0]),
-            Center(child: tabs_pages[1]),
-            Center(child: tabs_pages[2]),
+            for (final page in tabs_pages) page
           ],
         ),
       ),

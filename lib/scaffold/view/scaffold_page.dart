@@ -102,8 +102,8 @@ class _ScaffoldView extends State<ScaffoldView> {
               onPageChanged: (index) {
                 setState(() => index);
               },
-              children: <Widget>[
-                for (int i = 0; i <= 3; i++) _navBarStates[i],
+              children: [
+                for (final state in _navBarStates) state
               ],
             ),
           ),
