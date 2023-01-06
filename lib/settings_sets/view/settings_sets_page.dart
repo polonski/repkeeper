@@ -31,6 +31,22 @@ class _SettingsSetsView extends State<SettingsSetsView> {
     return MultiBlocProvider(
       providers: [BlocProvider(create: (_) => SettingsSetsCubit(), lazy: true)],
       child: Scaffold(
+        body: Scrollbar(
+          child: ListView(
+            children: [
+              for (int index = 1; index < 21; index++)
+                ListTile(
+                  leading: ExcludeSemantics(
+                    child: CircleAvatar(child: Text('$index')),
+                  ),
+                  title: Text(
+                    'Set $index',
+                  ),
+                  subtitle: const Text('Secondary text'),
+                ),
+            ],
+          ),
+        ),
         floatingActionButton: FloatingActionButton.extended(
           icon: const Icon(Icons.add),
           label: const Text('New Set'),

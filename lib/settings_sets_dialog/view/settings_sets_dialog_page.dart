@@ -28,18 +28,20 @@ class _SettingsSetsDialogView extends State<SettingsSetsDialogView> {
     final l10n = context.l10n;
 
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (_) => SettingsSetsDialogCubit(), lazy: true)],
+      providers: [
+        BlocProvider(create: (_) => SettingsSetsDialogCubit(), lazy: true)
+      ],
       child: Scaffold(
-      appBar: new AppBar(
-        title: const Text('New entry'),
-        actions: [
-          new TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: new Text('SAVE')),
-        ],
-      ),
+        appBar: new AppBar(
+          title: const Text('New entry'),
+          actions: [
+            new TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: new Text('SAVE')),
+          ],
+        ),
         body: new Text("Foo"),
       ),
     );

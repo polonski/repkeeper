@@ -80,7 +80,7 @@ class _SettingsView extends State<SettingsView>
         appBar: AppBar(
           automaticallyImplyLeading: false,
           title: Text(
-            '${tabs[context.watch<SettingsCubit>().state]} Settings',
+            tabs[context.watch<SettingsCubit>().state],
           ),
         ),
         bottomNavigationBar: Container(
