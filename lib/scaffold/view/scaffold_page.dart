@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:repkeeper/drawer/drawer.dart';
@@ -29,6 +28,31 @@ class ScaffoldView extends StatefulWidget {
 }
 
 class _ScaffoldView extends State<ScaffoldView> {
+  int _selectedIndex = 0;
+  late PageController _pageController;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  void _onItemTapped(int index) {
+    context.read<ScaffoldCubit>().setTabIndex(index);
+
+    setState(() {
+      _selectedIndex = index;
+      _pageController.animateToPage(index,
+          duration: Duration(milliseconds: 200), curve: Curves.easeOut);
+    });
+  }
+
   final _navBarStates = const <Widget>[
     WorkoutPage(),
     SettingsPage(),
@@ -47,7 +71,6 @@ class _ScaffoldView extends State<ScaffoldView> {
           unselectedItemColor: Colors.grey,
           selectedItemColor: Colors.blue,
           backgroundColor: Colors.white,
-          
           type: BottomNavigationBarType.fixed,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -68,13 +91,21 @@ class _ScaffoldView extends State<ScaffoldView> {
             ),
           ],
           currentIndex: context.watch<ScaffoldCubit>().state,
-          onTap: context.read<ScaffoldCubit>().setTabIndex,
+          onTap: _onItemTapped,
         ),
         body: BlocProvider(
           create: (context) => ScaffoldCubit(),
           lazy: false,
-          child: Center(
-            child: _navBarStates[context.read<ScaffoldCubit>().state],
+          child: SizedBox.expand(
+            child: PageView(
+              controller: _pageController,
+              onPageChanged: (index) {
+                setState(() => _selectedIndex = index);
+              },
+              children: <Widget>[
+                for (int i = 0; i <= 3; i++) Container(child: _navBarStates[i]),
+              ],
+            ),
           ),
         ),
       ),
